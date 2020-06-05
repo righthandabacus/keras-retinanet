@@ -1,3 +1,9 @@
+# Tensorflow 2 port of Keras RetinaNet
+
+This is my modification of keras-retinanet, with `import keras` replaced by `from tensorflow import keras` and other benign modifications. This is aimed to retain maximum compatibility to the upstream so this repository can easily `git rebase` whenever new commits has been made to the upstream.
+
+---
+
 # Keras RetinaNet [![Build Status](https://travis-ci.org/fizyr/keras-retinanet.svg?branch=master)](https://travis-ci.org/fizyr/keras-retinanet) [![DOI](https://zenodo.org/badge/100249425.svg)](https://zenodo.org/badge/latestdoi/100249425)
 
 Keras implementation of RetinaNet object detection as described in [Focal Loss for Dense Object Detection](https://arxiv.org/abs/1708.02002)
