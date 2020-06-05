@@ -14,8 +14,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import keras
-from keras.utils import get_file
+from tensorflow import keras
+from tensorflow.keras.utils import get_file
+
+# Hack Python module system for keras in keras_resnet to use tf.keras instead
+import sys
+for _name in [x for x in sys.modules.keys() if x.startswith('tensorflow.keras')]:
+    sys.modules[_name[len("tensorflow."):]] = sys.modules[_name]
+
 import keras_resnet
 import keras_resnet.models
 

@@ -3,7 +3,7 @@
 
 # ## Load necessary modules
 # import keras
-import keras
+from tensorflow import keras
 
 import sys
 sys.path.insert(0, '../')

@@ -21,8 +21,7 @@ import os
 import sys
 import warnings
 
-import keras
-import keras.preprocessing.image
+from tensorflow import keras
 import tensorflow as tf
 
 # Allow relative imports when being executed as script.
@@ -106,7 +105,7 @@ def create_models(backbone_retinanet, num_classes, weights, multi_gpu=0,
     # Keras recommends initialising a multi-gpu model on the CPU to ease weight sharing, and to prevent OOM errors.
     # optionally wrap in a parallel model
     if multi_gpu > 1:
-        from keras.utils import multi_gpu_model
+        from tensorflow.keras.utils import multi_gpu_model
         with tf.device('/cpu:0'):
             model = model_with_weights(backbone_retinanet(num_classes, num_anchors=num_anchors, modifier=modifier), weights=weights, skip_mismatch=True)
         training_model = multi_gpu_model(model, gpus=multi_gpu)
@@ -123,7 +122,7 @@ def create_models(backbone_retinanet, num_classes, weights, multi_gpu=0,
             'regression'    : losses.smooth_l1(),
             'classification': losses.focal()
         },
-        optimizer=keras.optimizers.adam(lr=lr, clipnorm=0.001)
+        optimizer=keras.optimizers.Adam(lr=lr, clipnorm=0.001)
     )
 
     return model, training_model, prediction_model
@@ -200,6 +199,7 @@ def create_callbacks(model, training_model, prediction_model, validation_generat
     ))
 
     callbacks.append(keras.callbacks.EarlyStopping(
+        restore_best_weights = True,
         monitor    = 'mAP',
         patience   = 5,
         mode       = 'max',

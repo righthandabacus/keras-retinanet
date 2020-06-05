@@ -16,7 +16,7 @@ limitations under the License.
 
 from __future__ import print_function
 
-import keras
+from tensorflow import keras
 import sys
 
 minimum_keras_version = 2, 3, 0
@@ -28,7 +28,7 @@ def keras_version():
     Returns
         tuple of (major, minor, patch).
     """
-    return tuple(map(int, keras.__version__.split('.')))
+    return tuple(map(int, keras.__version__.split('-')[0].split('.')))
 
 
 def keras_version_ok():
