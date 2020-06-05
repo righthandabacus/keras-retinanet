@@ -14,12 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import keras
-from keras.utils import get_file
+from tensorflow import keras
+from tensorflow.keras.utils import get_file
 
 from . import retinanet
 from . import Backbone
-from classification_models.keras import Classifiers
+from classification_models.tfkeras import Classifiers  # https://github.com/qubvel/classification_models
 
 
 class SeBackbone(Backbone):

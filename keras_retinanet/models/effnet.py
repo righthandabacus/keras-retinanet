@@ -14,12 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import keras
-from keras.utils import get_file
+from tensorflow import keras
+from tensorflow.keras.utils import get_file
 
 from . import retinanet
 from . import Backbone
-import efficientnet.keras as efn
+import efficientnet.tfkeras as efn
 
 
 class EfficientNetBackbone(Backbone):
