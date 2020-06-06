@@ -19,7 +19,7 @@ from __future__ import print_function
 import tensorflow as tf
 import sys
 
-MINIMUM_TF_VERSION = 1, 14, 0
+MINIMUM_TF_VERSION = 2, 0, 0
 BLACKLISTED_TF_VERSIONS = [
     (2, 0, 0),  # Has a number of memory leaks and issues with eager execution.
     (2, 0, 1),  # Has a number of memory leaks and issues with eager execution.

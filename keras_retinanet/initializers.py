@@ -34,6 +34,8 @@ class PriorProbability(keras.initializers.Initializer):
 
     def __call__(self, shape, dtype=None):
         # set bias to -log((1 - p)/p) for foreground
+        if hasattr(dtype, 'as_numpy_dtype'):
+            dtype = dtype.as_numpy_dtype()  # tf.dtype.*
         result = np.ones(shape, dtype=dtype) * -math.log((1 - self.probability) / self.probability)
 
         return result
